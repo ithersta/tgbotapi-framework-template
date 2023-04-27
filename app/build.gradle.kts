@@ -5,8 +5,9 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":telegram"))
     implementation(project(":domain"))
+    implementation(project(":telegram"))
+    implementation(project(":data"))
 }
 
 application {

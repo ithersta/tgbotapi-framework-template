@@ -1,4 +1,4 @@
-package sample
+package common
 
 import org.koin.core.annotation.Single
 
