@@ -1,0 +1,27 @@
+[versions]
+kotlin = "1.8.21"
+koin = "3.4.0"
+koin-annotations = "1.2.0"
+exposed = "0.41.1"
+ksp = "1.8.21-1.0.11"
+jib = "3.3.1"
+tgbotapi = "0.1.1"
+
+[libraries]
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "koin-annotations" }
+koin-ksp = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koin-annotations" }
+exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
+exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
+tgbotapi-framework = { module = "com.ithersta.tgbotapi-framework:lib", version.ref = "tgbotapi" }
+tgbotapi-autoconfigure = { module = "com.ithersta.tgbotapi-framework:autoconfigure", version.ref = "tgbotapi" }
+tgbotapi-autoconfigure-ksp = { module = "com.ithersta.tgbotapi-framework:autoconfigure-ksp", version.ref = "tgbotapi" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+jib = { id = "com.google.cloud.tools.jib", version.ref = "jib" }
+
+[bundles]
+exposed = ["exposed-core", "exposed-jdbc"]
