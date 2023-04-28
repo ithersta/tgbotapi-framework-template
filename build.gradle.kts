@@ -12,3 +12,7 @@ allprojects {
         maven("https://jitpack.io")
     }
 }
+
+detekt {
+    buildUponDefaultConfig = true
+}
