@@ -5,9 +5,9 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":domain"))
     implementation(project(":telegram"))
     implementation(project(":data"))
+    runtimeOnly(libs.slf4j.simple)
 }
 
 application {

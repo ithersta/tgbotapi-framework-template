@@ -5,8 +5,11 @@ koin-annotations = "1.2.0"
 exposed = "0.41.1"
 ksp = "1.8.21-1.0.11"
 jib = "3.3.1"
-tgbotapi = "0.1.1"
+tgbotapi = "0.2.0"
 postgresql = "42.6.0"
+arrow = "1.2.0-RC"
+kotlin-logging = "4.0.0-beta-28"
+slf4j = "2.0.7"
 
 [libraries]
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
@@ -19,6 +22,9 @@ tgbotapi-framework = { module = "com.ithersta.tgbotapi-framework:lib", version.r
 tgbotapi-autoconfigure = { module = "com.ithersta.tgbotapi-framework:autoconfigure", version.ref = "tgbotapi" }
 tgbotapi-autoconfigure-ksp = { module = "com.ithersta.tgbotapi-framework:autoconfigure-ksp", version.ref = "tgbotapi" }
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
+kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
+slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

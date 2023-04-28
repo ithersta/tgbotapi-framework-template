@@ -6,6 +6,7 @@ plugins {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(libs.kotlin.logging)
     implementation(libs.tgbotapi.autoconfigure)
     api(libs.tgbotapi.framework)
     ksp(libs.tgbotapi.autoconfigure.ksp)

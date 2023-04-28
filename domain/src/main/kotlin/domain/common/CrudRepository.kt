@@ -1,6 +1,6 @@
-package common
+package domain.common
 
-interface BaseRepository<Entity : Any, NewEntity : Any, Id : Any> {
+interface CrudRepository<Entity : Any, NewEntity : Any, Id : Any> {
     suspend fun add(entity: NewEntity): Id
     suspend fun get(id: Id): Entity
     suspend fun getAll(): List<Entity>

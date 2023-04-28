@@ -5,6 +5,8 @@ plugins {
 }
 
 dependencies {
+    implementation(libs.kotlin.logging)
+    api(libs.arrow.core)
     api(libs.koin.core)
     compileOnly(libs.koin.annotations)
     ksp(libs.koin.ksp)
