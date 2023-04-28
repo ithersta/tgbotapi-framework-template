@@ -1,0 +1,30 @@
+name: Detekt
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  gradle:
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.head_commit.message, 'ci skip') }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Run analysis
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: detektMain detektTest --continue
+
+      - name: Post to PR
+        uses: mshick/add-pr-comment@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: (success() || failure()) && startsWith(github.ref, 'refs/pull/')
+        with:
+          message-path: "./build/reports/detekt/main.md"
