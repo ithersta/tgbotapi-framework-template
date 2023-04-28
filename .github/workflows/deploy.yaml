@@ -20,10 +20,10 @@ jobs:
         run: |
           if [[ "${GITHUB_REF_NAME}" == "main" ]]
           then
-            echo "tag=skolkovo-rectors-tinder-staging" >> "$GITHUB_ENV"
+            echo "tag=tgbotapi-framework-template-staging" >> "$GITHUB_ENV"
             echo "compose=docker-compose.staging.yml" >> "$GITHUB_ENV"
           else
-            echo "tag=skolkovo-rectors-tinder" >> "$GITHUB_ENV"
+            echo "tag=tgbotapi-framework-template" >> "$GITHUB_ENV"
             echo "compose=docker-compose.yml" >> "$GITHUB_ENV"
           fi
       - name: Checkout files
