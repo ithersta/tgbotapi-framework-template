@@ -15,7 +15,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check secrets
+        run: |
+          if [ "${{ secrets.SSH_KEY }}" != '' ]
+          then
+            echo "deployable=true" >> "$GITHUB_ENV"
+          fi
       - name: Get release type
+        if: ${{ env.deployable == 'true' }}
         id: get_release_type
         run: |
           if [[ "${GITHUB_REF_NAME}" == "main" ]]
@@ -27,8 +34,10 @@ jobs:
             echo "compose=docker-compose.yml" >> "$GITHUB_ENV"
           fi
       - name: Checkout files
+        if: ${{ env.deployable == 'true' }}
         uses: actions/checkout@v3
       - name: Build and push Docker image
+        if: ${{ env.deployable == 'true' }}
         uses: gradle/gradle-build-action@v2
         with:
           arguments: |
@@ -37,14 +46,17 @@ jobs:
               -Djib.to.auth.username=${{ secrets.DOCKER_USERNAME }}
               -Djib.to.auth.password=${{ secrets.DOCKER_PASSWORD }}
       - name: Install Docker Compose
+        if: ${{ env.deployable == 'true' }}
         run: curl -L https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
       - name: Install SSH key
+        if: ${{ env.deployable == 'true' }}
         uses: shimataro/ssh-key-action@v2.5.1
         with:
           key: ${{ secrets.SSH_KEY }}
           name: id_ed25519
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
       - name: Deploy
+        if: ${{ env.deployable == 'true' }}
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker context create server --docker "host=ssh://${{ secrets.SSH_HOST }}"
