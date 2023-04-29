@@ -1,4 +1,4 @@
-name: Detekt
+name: Lint
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Run analysis
+      - name: Run detekt
         uses: gradle/gradle-build-action@v2
         with:
           arguments: detektMain detektTest --continue
@@ -28,3 +28,8 @@ jobs:
         if: (success() || failure()) && startsWith(github.ref, 'refs/pull/')
         with:
           message-path: "./build/reports/detekt/main.md"
+
+      - name: Run ktlint
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: spotlessCheck --continue
