@@ -32,7 +32,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: |
-            jib
+            app:jib
               -Djib.to.image=ithersta/projects:${{ env.tag }}
               -Djib.to.auth.username=${{ secrets.DOCKER_USERNAME }}
               -Djib.to.auth.password=${{ secrets.DOCKER_PASSWORD }}
