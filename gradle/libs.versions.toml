@@ -1,7 +1,7 @@
 [versions]
 kotlin = "1.8.21"
 koin = "3.4.0"
-koin-annotations = "1.2.0"
+koin-annotations = "1.2.2"
 exposed = "0.41.1"
 ksp = "1.8.21-1.0.11"
 jib = "3.3.1"
