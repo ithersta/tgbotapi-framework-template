@@ -5,6 +5,8 @@ plugins {
 }
 
 dependencies {
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.serialization.core)
     implementation(libs.kotlin.logging)
     api(libs.arrow.core)
     api(libs.koin.core)

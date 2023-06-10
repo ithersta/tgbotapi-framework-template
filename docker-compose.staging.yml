@@ -2,17 +2,43 @@ version: '3.9'
 
 secrets:
   token:
-    file: /root/tgbotapi-framework-template/token
+    file: /root/tgbotapi-framework-template/staging-token
+  pgadmin:
+    file: /root/tgbotapi-framework-template/staging-pgadmin
+  cert.pem:
+    file: /root/.cloudflared/cert.pem
+  cloudflared:
+    file: /root/tgbotapi-framework-template/staging-cloudflared.json
 
 services:
   postgres:
-    image: "postgres:15"
+    image: ghcr.io/ithersta/postgres-docker-extensions:main
+    restart: unless-stopped
     environment:
-      POSTGRES_DB: database
-      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
       - postgres:/var/lib/postgresql/data/
+
+  pgadmin:
+    restart: unless-stopped
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    secrets:
+      - pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: schilyaev.vlad@gmail.com
+      PGADMIN_DEFAULT_PASSWORD_FILE: /run/secrets/pgadmin
+
+  cloudflared:
+    restart: unless-stopped
+    image: cloudflare/cloudflared
+    command: tunnel --origincert /run/secrets/cert.pem --credentials-file /run/secrets/cloudflared run tgbotapi-framework-template-staging
+    secrets:
+      - cert.pem
+      - cloudflared
 
   app:
     image: ithersta/projects:tgbotapi-framework-template-staging
@@ -21,13 +47,19 @@ services:
       - postgres
     secrets:
       - token
+    volumes:
+      - app:/data
     environment:
-      DATABASE_NAME: database
+      DATABASE_NAME: postgres
       DATABASE_USER: postgres
       DATABASE_PASSWORD: postgres
       DATABASE_SERVER: postgres
-      DUMP_USER_ID: 105293829
+      DUMP_ENDPOINT: http://postgres:8080/
+      DUMP_CHAT_ID: 105293829
+      ADMIN_IDS: 394504047,105293829
       TOKEN_FILE: /run/secrets/token
 
 volumes:
+  app:
   postgres:
+  pgadmin:

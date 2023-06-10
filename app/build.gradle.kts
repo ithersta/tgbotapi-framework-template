@@ -13,3 +13,8 @@ dependencies {
 application {
     mainClass.set("MainKt")
 }
+
+jib {
+    from.image = "eclipse-temurin:20-jre"
+    container.workingDirectory = "/data"
+}
