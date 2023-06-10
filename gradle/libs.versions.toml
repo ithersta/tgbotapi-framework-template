@@ -1,5 +1,5 @@
 [versions]
-kotlin = "1.8.21"
+kotlin = "1.8.22"
 koin = "3.4.0"
 koin-annotations = "1.2.0"
 exposed = "0.41.1"
