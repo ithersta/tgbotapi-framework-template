@@ -56,7 +56,6 @@ services:
       DATABASE_SERVER: postgres
       DUMP_ENDPOINT: http://postgres:8080/
       DUMP_CHAT_ID: 105293829
-      ADMIN_IDS: 394504047,105293829
       TOKEN_FILE: /run/secrets/token
 
 volumes:
