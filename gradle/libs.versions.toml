@@ -1,17 +1,24 @@
 [versions]
-kotlin = "1.8.21"
-koin = "3.4.0"
-koin-annotations = "1.2.0"
+kotlin = "1.8.22"
+koin = "3.4.2"
+koin-annotations = "1.2.2"
 exposed = "0.41.1"
-ksp = "1.8.21-1.0.11"
-jib = "3.3.1"
-tgbotapi = "0.3.0"
+ksp = "1.8.22-1.0.11"
+jib = "3.3.2"
+tgbotapi = "0.7.0"
 postgresql = "42.6.0"
 arrow = "1.2.0-RC"
-kotlin-logging = "4.0.0-beta-28"
+kotlin-logging = "4.0.0-beta-29"
 slf4j = "2.0.7"
-detekt = "1.22.0"
-spotless = "6.18.0"
+detekt = "1.23.0"
+spotless = "6.19.0"
+kotlinx-serialization = "1.5.1"
+commons-validator = "1.7"
+kotest = "5.6.2"
+kotlinx-coroutines = "1.7.1"
+poi = "5.2.3"
+benmanes-versions = "0.47.0"
+schedule-api = "v1.2.1"
 
 [libraries]
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
@@ -20,13 +27,21 @@ koin-ksp = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koin-an
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
 exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
 exposed-dao = { module = "org.jetbrains.exposed:exposed-dao", version.ref = "exposed" }
-tgbotapi-framework = { module = "com.ithersta.tgbotapi-framework:lib", version.ref = "tgbotapi" }
 tgbotapi-autoconfigure = { module = "com.ithersta.tgbotapi-framework:autoconfigure", version.ref = "tgbotapi" }
 tgbotapi-autoconfigure-ksp = { module = "com.ithersta.tgbotapi-framework:autoconfigure-ksp", version.ref = "tgbotapi" }
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
+arrow-resilience = { module = "io.arrow-kt:arrow-resilience", version.ref = "arrow" }
 kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-serialization-json={module="org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref="kotlinx-serialization" }
+commons-validator = { module = "commons-validator:commons-validator", version.ref = "commons-validator" }
+kotest = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5", version.ref = "kotlin" }
+schedule-api = { module = "com.github.fleshka4:RuzSpbStuJavaApi", version.ref = "schedule-api" }
+poi-ooxml = {module = "org.apache.poi:poi-ooxml", version.ref = "poi"}
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -35,6 +50,7 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 jib = { id = "com.google.cloud.tools.jib", version.ref = "jib" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+benmanes-versions = { id = "com.github.ben-manes.versions", version.ref = "benmanes-versions" }
 
 [bundles]
 exposed = ["exposed-core", "exposed-jdbc", "exposed-dao"]

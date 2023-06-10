@@ -8,7 +8,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(libs.kotlin.logging)
     implementation(libs.tgbotapi.autoconfigure)
-    api(libs.tgbotapi.framework)
+    implementation(libs.arrow.resilience)
     ksp(libs.tgbotapi.autoconfigure.ksp)
     api(libs.koin.core)
     compileOnly(libs.koin.annotations)
