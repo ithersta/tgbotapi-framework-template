@@ -40,7 +40,7 @@ fun dumpRunner() = statefulRunner {
             return@launchSafely
         }
         val api = DumpApi(dumpEndpoint)
-        Schedule.linear<Unit>(dumpInterval).repeat {
+        Schedule.spaced<Unit>(dumpInterval).repeat {
             api.get().onRight {
                 sendDocument(dumpChatId, it.asMultipartFile("dump-${Instant.now()}.sql"))
             }.onLeft {
