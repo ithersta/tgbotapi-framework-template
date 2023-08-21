@@ -12,6 +12,7 @@ dependencies {
     api(libs.koin.core)
     compileOnly(libs.koin.annotations)
     ksp(libs.koin.ksp)
+    implementation(libs.kotlinx.serialization.json)
 }
 
 tasks.test {

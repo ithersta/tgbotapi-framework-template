@@ -3,7 +3,6 @@ package telegram.menu.flows
 import com.ithersta.tgbotapi.autoconfigure.DialogueFlow
 import com.ithersta.tgbotapi.basetypes.MessageState
 import com.ithersta.tgbotapi.basetypes.Role
-import com.ithersta.tgbotapi.builders.inState
 import dev.inmo.tgbotapi.extensions.api.send.send
 import dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard
 import dev.inmo.tgbotapi.extensions.utils.types.buttons.simpleButton
@@ -16,7 +15,7 @@ import telegram.menu.dsl.MenuItem
 import telegram.menu.mainMenu
 
 @Single
-class MainMenuFlow : DialogueFlow {
+class MainMenuFlow : DialogueFlow() {
     @Serializable
     data class MenuState(
         val text: String,
