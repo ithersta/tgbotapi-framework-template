@@ -1,6 +1,6 @@
 [versions]
 kotlin = "1.9.0"
-koin = "3.4.2"
+koin = "3.5.3"
 koin-annotations = "1.2.2"
 exposed = "0.41.1"
 ksp = "1.9.0-1.0.12"
